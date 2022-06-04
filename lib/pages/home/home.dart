@@ -54,6 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Container(
           width: kIsWeb ? MediaQuery.of(context).size.width * 1 : MediaQuery.of(context).size.width,
           child: Container(
+
             margin: kIsWeb ? EdgeInsets.symmetric(horizontal: 300) : EdgeInsets.all(0),
             child: Column(
               children: [
