@@ -42,9 +42,12 @@ class DoaCard extends StatelessWidget {
         SizedBox(
           height: 10,
         ),
-        Text(pray,
-          maxLines: 4,
-          style: TextStyle(overflow: TextOverflow.visible),
+        Expanded(
+          flex: 2,
+          child: Text(pray,
+            maxLines: 4,
+            style: TextStyle(overflow: TextOverflow.visible),
+          ),
         ),
         SizedBox(
           height: 20,
