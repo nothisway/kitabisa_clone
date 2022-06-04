@@ -6,11 +6,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kitabisa_clone/const/colors.dart';
+import 'package:kitabisa_clone/pages/home/widgets/doa_card.dart';
 import 'package:kitabisa_clone/pages/home/widgets/donation_card.dart';
 import 'package:kitabisa_clone/pages/home/widgets/icon_menu.dart';
 import 'package:kitabisa_clone/pages/home/widgets/pilihan_kitabisa_card.dart';
 import 'package:kitabisa_clone/pages/home/widgets/section1.dart';
-
+import 'dart:math';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -159,8 +160,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   Container(
+                    width: MediaQuery.of(context).size.width,
                     color: Colors.white,
-                    padding: EdgeInsets.only(left: 10, right: 10, bottom: 0, top: 0),
+                    padding: EdgeInsets.only(left: 0, right: 0, bottom: 0, top: 0),
                     margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
                     child: Image.asset('assets/images/flashsale.png', fit: BoxFit.fitWidth,),
                   ),
@@ -236,6 +238,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   amount: 'Rp 34.231.080', progress: 0.5, remainDate: '8 hari lagi'),
                               PilihanKitaBisaCard(title: "Sedekah Al-Quran untuk 200 lebih hafiz", image: 'assets/images/programpilihan3.jpeg',
                                   amount: 'Rp 89.231.080', progress: 0.8, remainDate: '8 hari lagi'),
+                              PilihanKitaBisaCard(title: "Sedekah Al-Quran untuk 200 lebih hafiz", image: 'assets/images/programpilihan3.jpeg',
+                                  amount: 'Rp 89.231.080', progress: 0.8, remainDate: '8 hari lagi'),
                               Container(
                                 width: 180,
                                 height: 200,
@@ -244,7 +248,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment: CrossAxisAlignment.center,
                                     children: [
-                                        Icon(Icons.arrow_right, color: CustomColors.primary, size: 50,),
+                                        SvgPicture.asset('assets/icons/arrow-right.svg', color: CustomColors.primary,),
                                         Text('Lihat Semua', style: TextStyle(color: CustomColors.primary, fontSize: 16, fontWeight: FontWeight.bold),)
                                     ],
                                   ),
@@ -255,6 +259,107 @@ class _HomeScreenState extends State<HomeScreen> {
                         )
                       ],
                     ),
+                  ),
+
+                  Container(
+                    color: Colors.white,
+                    padding: EdgeInsets.only(left: 10, right: 10, bottom: 20, top: 10),
+                    margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text('Doa-doa #OrangBaik',
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600)),
+                            Text('Lihat lainnya',
+                                style: TextStyle(
+                                    color: CustomColors.primary,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w300)),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+
+                        Container(
+                          height: 280,
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: [
+                              Container(
+                                width: 350,
+                                child: Card(
+                                  elevation: 3,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: DoaCard(
+                                      name: 'Anonim',
+                                      bio: 'Tuhan yesus bantu',
+                                      ago: 'semenit',
+                                      pray: 'Semoga tindakan medis segera bisa diambil untuk adik ini dan bisa tumbuh sehat bermain dan bahagia seperti anak sehat yang lain',
+                                      aminCount: '5',
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                width: 350,
+                                child: Card(
+                                  elevation: 3,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: DoaCard(
+                                      name: 'John Doe',
+                                      bio: 'Orang Dermawan',
+                                      ago: '5',
+                                      pray: 'Semoga bermanfaat',
+                                      aminCount: '100',
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                width: 350,
+                                child: Card(
+                                  elevation: 3,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: DoaCard(
+                                      name: 'Jono Suparno',
+                                      bio: 'Orang Dermawan',
+                                      ago: '10',
+                                      pray: 'Semoga dimurahkan rezekinya',
+                                      aminCount: '4',
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                width: 180,
+                                height: 200,
+                                child: Center(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      SvgPicture.asset('assets/icons/arrow-right.svg', color: CustomColors.primary,),
+                                      Text('Lihat Semua', style: TextStyle(color: CustomColors.primary, fontSize: 16, fontWeight: FontWeight.bold),)
+                                    ],
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    )
                   ),
 
                 ],
@@ -337,7 +442,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           )),
       body: Container(
-        color: Colors.white10,
+        color: Colors.grey[200],
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: bottomNavigationBar(),
