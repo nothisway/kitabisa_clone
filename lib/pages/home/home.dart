@@ -8,6 +8,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kitabisa_clone/const/colors.dart';
 import 'package:kitabisa_clone/pages/home/widgets/donation_card.dart';
 import 'package:kitabisa_clone/pages/home/widgets/icon_menu.dart';
+import 'package:kitabisa_clone/pages/home/widgets/pilihan_kitabisa_card.dart';
 import 'package:kitabisa_clone/pages/home/widgets/section1.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -52,7 +53,6 @@ class _HomeScreenState extends State<HomeScreen> {
       SingleChildScrollView(
         child: LayoutBuilder(
           builder: (context, constraints) {
-            print('constraint : ${constraints.maxWidth}');
             return Container(
               margin: constraints.maxWidth > 600 ? EdgeInsets.symmetric(horizontal: constraints.maxWidth * 0.25) : EdgeInsets.all(0),
               child: Column(
@@ -192,6 +192,64 @@ class _HomeScreenState extends State<HomeScreen> {
                                   amount: 'Rp 34.231.080', progress: 0.2, remainDate: '8 hari lagi'),
                               DonationCard(title: 'Anak tukang becak ditabrak, KOMA & Kritis', image: 'assets/images/program spesial 3.jpeg',
                                   amount: 'Rp 34.231.080', progress: 0.2, remainDate: '8 hari lagi'),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+
+                  Container(
+                    color: Colors.white,
+                    padding: EdgeInsets.only(left: 10, right: 10, bottom: 20, top: 10),
+                    margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text('Pilihan Kitabisa',
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600)),
+                            Text('Lihat lainnya',
+                                style: TextStyle(
+                                    color: CustomColors.primary,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w300)),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Container(
+                          height: 260,
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: [
+                              PilihanKitaBisaCard(title: "Pahala mengalir selamanya: wakaf 26", image: 'assets/images/program pilihan 1.jpeg',
+                                  amount: 'Rp 108.231.080', progress: 0.2, remainDate: '8 hari lagi'),
+                              PilihanKitaBisaCard(title: "Jumat berkah wakaf air bersih", image: 'assets/images/program pilihan 2.jpeg',
+                                  amount: 'Rp 34.231.080', progress: 0.5, remainDate: '8 hari lagi'),
+                              PilihanKitaBisaCard(title: "Sedekah Al-Quran untuk 200 lebih hafiz", image: 'assets/images/programpilihan3.jpeg',
+                                  amount: 'Rp 89.231.080', progress: 0.8, remainDate: '8 hari lagi'),
+                              Container(
+                                width: 180,
+                                height: 200,
+                                child: Center(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                        Icon(Icons.arrow_right, color: CustomColors.primary, size: 50,),
+                                        Text('Lihat Semua', style: TextStyle(color: CustomColors.primary, fontSize: 16, fontWeight: FontWeight.bold),)
+                                    ],
+                                  ),
+                                ),
+                              )
                             ],
                           ),
                         )
