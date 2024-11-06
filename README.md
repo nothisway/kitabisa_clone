@@ -1,6 +1,6 @@
 # kitabisa_clone
 
-Kita bisa Clone
+Kita bisa Website Clone with Flutter Web
 
 ## Getting Started
 
